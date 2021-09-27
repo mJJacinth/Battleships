@@ -61,7 +61,7 @@ emptyGrid(rows, cols)
 Parameters: int ; int
 Returns: 2D list of ints
 '''
-def emptyGrid(rows, cols):
+def emptyGrid(rows, cols):#this is a function
     return
 
 
