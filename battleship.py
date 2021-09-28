@@ -96,9 +96,9 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    for i in range(0,3): 
-        if grid[ship[i][0]][ship[i][1]]==EMPTY_UNCLICKED: 
-            continue 
+    for r in range(0,3): 
+        if grid[ship[r][0]][ship[r][1]]==EMPTY_UNCLICKED: 
+            pass
         else: 
             return False 
     return True
