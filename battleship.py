@@ -137,7 +137,7 @@ drawGrid(data, canvas, grid, showShips)
 Parameters: dict mapping strs to values ; Tkinter canvas ; 2D list of ints ; bool
 Returns: None
 '''
-def drawGrid(data, canvas, grid, showShips):
+def drawGrid(data, canvas, grid, showShips):#drawgrid
     for rows in range(data["rows"]):
         for cols in range(data["columns"]):
             if grid[rows][cols]==SHIP_UNCLICKED:
