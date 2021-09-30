@@ -32,6 +32,7 @@ def makeModel(data):
     data["cellsize"]=data["boardsize"]/data["rows"]
     data["computerboard"]=emptyGrid(data["rows"],data["columns"])
     data["userboard"]=emptyGrid(data["rows"],data["columns"])
+    #data["userboard"]=test.testGrid()
     data["numShips"]=5
     addShips(data["computerboard"],data["numShips"])
     return
@@ -319,6 +320,6 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
- #runSimulation(500, 500)
+ runSimulation(500, 500)
  test.testDrawGrid()
     
