@@ -37,6 +37,7 @@ def makeModel(data):
     data["numShips"]=5
     addShips(data["computerboard"],data["numShips"])
     data["tempships"]=[]
+    data["numberoftempships"]=0
     return
 
 
@@ -67,7 +68,7 @@ Parameters: dict mapping strs to values ; mouse event object ; 2D list of ints
 Returns: None
 '''
 def mousePressed(data, event, board):
-    pass
+    return
 
 #### WEEK 1 ####
 
@@ -227,6 +228,13 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def placeShip(data):
+    if shipIsValid(data["userboard"],data["tempships"]):
+        for i in data["tempships"]:
+            data["userboard"][i[0]][i[1]]=SHIP_UNCLICKED
+        data["numberoftempships"]=data["numberoftempships"]+1
+    else:
+        print("SHIP IS NOT VALID")
+    data["tempships"]=[]
     return
 
 
@@ -236,6 +244,16 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
+    if data["numberoftempships"]==5:
+        return
+    if [row,col] in data["tempships"]:
+        return
+    data["tempships"].append([row,col])
+    if (len(data["tempships"]))==3:
+        placeShip(data)
+    if data["numberoftempships"]==5:
+        print("start the game")
+    
     return
 
 
@@ -343,5 +361,5 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
-    test.testShipIsValid()
+    runSimulation(500, 500)
+    #test.testShipIsValid()
