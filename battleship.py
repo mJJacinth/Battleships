@@ -36,7 +36,7 @@ def makeModel(data):
     #data["userboard"]=test.testGrid()
     data["numShips"]=5
     addShips(data["computerboard"],data["numShips"])
-    data["tempships"]=test.testShip()
+    data["tempships"]=[]
     return
 
 
@@ -212,7 +212,13 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def shipIsValid(grid, ship):
-    return
+    if len(ship)==3:
+        if checkShip(grid,ship):
+            if isVertical(ship):
+                return True
+            elif isHorizontal(ship):
+                return True
+    return False
 
 
 '''
@@ -338,4 +344,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     #runSimulation(500, 500)
-    test.testDrawShip()
+    test.testShipIsValid()
