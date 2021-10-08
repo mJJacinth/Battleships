@@ -65,7 +65,8 @@ Parameters: dict mapping strs to values ; key event object
 Returns: None
 '''
 def keyPressed(data, event):
-    pass
+    if event.keycode==13:
+        makeModel(data)
 
 
 '''
@@ -354,10 +355,15 @@ Returns: None
 def drawGameOver(data, canvas):
     if data["winner"]=="user":
         canvas.create_text(250,250, text="CONGRATULATIONS", fill="grey", font=('Helvetica 25 bold'))
+        canvas.create_text(250,350, text="PRESS ENTER IF YOU WANT TO PLAY AGAIN", fill="grey", font=('Helvetica 15 bold'))
     elif data["winner"]=="comp": 
         canvas.create_text(250,250, text="YOU LOST", fill="grey", font=('Helvetica 25 bold'))
+        canvas.create_text(250,350, text="PRESS ENTER IF YOU WANT TO PLAY AGAIN", fill="grey", font=('Helvetica 15 bold'))
     elif data["winner"]=="draw":
         canvas.create_text(250,250, text="OUT OF MOVES", fill="grey", font=('Helvetica 25 bold'))
+        canvas.create_text(250,350, text="PRESS ENTER IF YOU WANT TO PLAY AGAIN", fill="grey", font=('Helvetica 15 bold'))
+
+
     return
 
 
@@ -420,4 +426,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
-    #test.testIsGameOver()
+    #test.test()
