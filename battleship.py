@@ -40,6 +40,8 @@ def makeModel(data):
     data["tempships"]=[]
     data["numberoftempships"]=0
     data["winner"]=None
+    data["maxnumofturns"]=50
+    data["currentnumofturns"]=0
     return
 
 
@@ -310,6 +312,9 @@ def runGameTurn(data, row, col):
         updateBoard(data,data["computerboard"],row,col,"user")
     result=getComputerGuess(data["userboard"])
     updateBoard(data,data["userboard"],result[0],result[1],"comp")
+    data["currentnumofturns"]= data["currentnumofturns"]+1
+    if data["currentnumofturns"]==data["maxnumofturns"]:
+        data["winner"]="draw"
     return
 
 
@@ -348,10 +353,13 @@ Returns: None
 '''
 def drawGameOver(data, canvas):
     if data["winner"]=="user":
-        canvas.create_text(250,250, text="CONGRATULATIONS", fill="grey", font=('Helvetica 15 bold'))
+        canvas.create_text(250,250, text="CONGRATULATIONS", fill="grey", font=('Helvetica 25 bold'))
     elif data["winner"]=="comp": 
-        canvas.create_text(250,250, text="YOU LOST", fill="grey", font=('Helvetica 15 bold'))
+        canvas.create_text(250,250, text="YOU LOST", fill="grey", font=('Helvetica 25 bold'))
+    elif data["winner"]=="draw":
+        canvas.create_text(250,250, text="OUT OF MOVES", fill="grey", font=('Helvetica 25 bold'))
     return
+
 
 
 ### SIMULATION FRAMEWORK ###
