@@ -326,11 +326,6 @@ Returns: list of ints
 '''
 def getComputerGuess(board):
 
-    while True:
-        rows=random.randint(0,9) 
-        columns=random.randint(0,9) 
-        if board[rows][columns]==SHIP_UNCLICKED or board[rows][columns]==EMPTY_UNCLICKED:
-            return [rows,columns]
     return
 
 
